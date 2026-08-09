@@ -1,0 +1,56 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 1380 >>
+stream
+BT
+BT /F1 24 Tf 1 0 0 1 60 770 Tm (sasuke) Tj ET
+BT /F1 13 Tf 1 0 0 1 60 744 Tm (DevOps Engineer & Software Developer) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 720 Tm (Builds software. Runs the infrastructure it lives on.) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 700 Tm (Replaces this placeholder PDF when ready.) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 700 Tm () Tj ET
+BT /F1 12 Tf 1 0 0 1 60 680 Tm (Experience) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 660 Tm (  - 8+ years across infrastructure, cloud and software engineering) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 644 Tm (  - Distributed systems, reliability, developer experience) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 628 Tm (  - Docker, Kubernetes, Terraform, AWS, Azure, Linux, NGINX) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 612 Tm (  - TypeScript, Go, Python, Node.js, PostgreSQL, Redis) Tj ET
+BT /F1 12 Tf 1 0 0 1 60 592 Tm (Focus) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 572 Tm (  - Clean architecture, DDD, SOLID, microservices) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 556 Tm (  - Observability: Prometheus, Grafana, Loki, Tempo) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 540 Tm (  - CI/CD: GitHub Actions, GitLab CI) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 520 Tm () Tj ET
+BT /F1 10 Tf 1 0 0 1 60 480 Tm (hello@sasuke.dev  |  github.com/sasuke  |  linkedin.com/in/sasuke) Tj ET
+BT /F1 10 Tf 1 0 0 1 60 120 Tm (PLACEHOLDER - replace this file with the real resume \(public/cv.pdf\).) Tj ET
+0 0 1 rg
+0.3 w 60 130 475 30 re S
+ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000321 00000 n 
+0000000396 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1827
+%%EOF
