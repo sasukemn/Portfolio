@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { useSectionActive } from "@/components/ui/useSectionActive";
@@ -39,12 +40,69 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
-function FileIcon({ className }: { className?: string }) {
+function ChevronDown({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
-      <path d="M14 2v6h6M9 13h6M9 17h6" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
+      <path d="m6 9 6 6 6-6" />
     </svg>
+  );
+}
+
+function CvSelector() {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(CONTACT.cv.items[0]);
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: MouseEvent) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [open]);
+
+  return (
+    <div ref={wrapRef} className="relative mt-6">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="btn btn-primary group flex w-full items-center justify-between gap-2"
+      >
+        <span className="text-xs">télécharger le cv</span>
+        <span className="flex items-center gap-2">
+          <span className="font-mono text-[10px] text-ice">{selected.label}</span>
+          <ChevronDown
+            className={`h-3.5 w-3.5 text-ice transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        </span>
+      </button>
+      {open && (
+        <div className="absolute bottom-full mb-2 w-full overflow-hidden rounded border border-line-soft bg-surface shadow-lg">
+          {CONTACT.cv.items.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              download
+              onClick={() => {
+                setSelected(item);
+                setOpen(false);
+              }}
+              className={`block px-4 py-3 font-mono text-xs ${
+                selected.href === item.href
+                  ? "bg-surface-2 text-ice"
+                  : "text-ink transition-colors hover:bg-surface-2"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -88,13 +146,6 @@ export function Contact() {
       value: CONTACT.phoneDisplay,
       href: CONTACT.phoneHref,
       available: Boolean(CONTACT.phone),
-    },
-    {
-      icon: <FileIcon className="h-4 w-4" />,
-      label: "Curriculum vitae",
-      value: CONTACT.cv.label,
-      href: CONTACT.cv.href,
-      available: CONTACT.cv.available,
     },
   ];
 
@@ -224,14 +275,7 @@ export function Contact() {
               {CONTACT.note}
             </div>
           </div>
-          {CONTACT.cv.available && (
-            <a
-              href={CONTACT.cv.href}
-              className="btn btn-primary mt-6"
-            >
-              télécharger le cv
-            </a>
-          )}
+          {CONTACT.cv.available && <CvSelector />}
         </motion.div>
       </div>
     </Section>

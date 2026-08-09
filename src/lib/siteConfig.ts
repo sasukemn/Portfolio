@@ -75,9 +75,11 @@ export const CONTACT = {
   linkedinUrl: "https://mg.linkedin.com/in/sasuke-manitra-niaina-306291395",
   calendly: "", // non fourni
   cv: {
-    available: false, // passez à true quand le CV sera prêt
-    label: "CV en préparation",
-    href: "/cv.pdf",
+    available: true,
+    items: [
+      { label: "CV Développeur", href: "/CV_DEV.pdf" },
+      { label: "CV Réseau", href: "/CV_RES.pdf" },
+    ],
   },
   note: "Disponible pour échanger sur les systèmes, les réseaux et le développement.",
 };

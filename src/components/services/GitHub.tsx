@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { useGitHubStats } from "@/lib/data/github";
-import { CONTACT } from "@/lib/siteConfig";
 
 function StatCard({ label, value }: { label: string; value: number }) {
   return (
@@ -23,7 +22,7 @@ function GitHubIcon({ className }: { className?: string }) {
 }
 
 export function GitHub() {
-  const { stats, live } = useGitHubStats();
+  const { stats } = useGitHubStats();
 
   return (
     <Section
@@ -32,30 +31,9 @@ export function GitHub() {
       service="source control"
       tag="source"
       title="GitHub"
-      subtitle="Les données viennent directement de l'API GitHub, jamais de chiffres inventés. Si la source n'est pas configurée, la section le dit clairement."
+      subtitle="Les données viennent directement de l'API GitHub — statistiques et dépôts réels."
     >
-      {!live ? (
-        <div className="panel lift mx-auto max-w-2xl p-8 text-center">
-          <GitHubIcon className="mx-auto h-8 w-8 text-ink-dim" />
-          <div className="eng-note mt-4 text-copper">{"// source non configurée"}</div>
-          <p className="mt-3 text-sm leading-relaxed text-ink-dim">
-            La source GitHub n&apos;est pas configurée. Ajoutez la variable{" "}
-            <code className="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-xs text-ice">
-              NEXT_PUBLIC_GITHUB_USER
-            </code>{" "}
-            pour afficher les statistiques réelles du compte.
-          </p>
-          <a
-            href={CONTACT.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary mt-5"
-          >
-            <GitHubIcon className="h-4 w-4" />
-            {CONTACT.github}
-          </a>
-        </div>
-      ) : stats ? (
+      {stats ? (
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -120,7 +98,15 @@ export function GitHub() {
             </div>
           </div>
         </motion.div>
-      ) : null}
+      ) : (
+        <div className="panel lift mx-auto max-w-2xl p-8 text-center">
+          <GitHubIcon className="mx-auto h-8 w-8 text-ink-dim" />
+          <div className="eng-note mt-4 text-copper">{"// chargement"}</div>
+          <p className="mt-3 text-sm leading-relaxed text-ink-dim">
+            Récupération des statistiques depuis l&apos;API GitHub…
+          </p>
+        </div>
+      )}
     </Section>
   );
 }

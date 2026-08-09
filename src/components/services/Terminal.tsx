@@ -118,7 +118,10 @@ export function Terminal() {
         push("out", `  note:       ${CONTACT.note}`);
         break;
       case "cv":
-        push("out", `  ${CONTACT.cv.label.toLowerCase()} — sera ajouté dès que disponible.`);
+        CONTACT.cv.items.forEach((cv) =>
+          push("out", `  ${cv.label} — ${cv.href}`),
+        );
+        push("out", "  disponible dans la section contact.");
         break;
       case "theme":
         toggleTheme();
